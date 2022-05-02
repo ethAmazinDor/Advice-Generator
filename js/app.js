@@ -4,7 +4,7 @@ const adviceNum = document.getElementById('adviceNum')
 
 
 document.getElementById('search').addEventListener('click', getSearch)
-const adviceMsg = document.querySelector('h5')
+const adviceMsg = document.querySelector('.adviceMessage')
 
 
 function getAdvice() {
@@ -34,8 +34,15 @@ function getSearch() {
         .then((data) => data.slips)
         .then(data => {
             console.log(data)
-            adviceMsg.innerText = data.advice
 
+            // adviceMsg.innerText = data.advice
+
+            data.forEach(slip => {
+                for (let advice in slip) {
+                    console.log(`${advice}: ${slip[advice]}`)
+
+                }
+            })
 
         })
         .then(err => {
