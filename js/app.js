@@ -26,6 +26,10 @@ function getAdvice() {
 
 function getSearch() {
     const search = document.querySelector('input').value
+    //const answers = document.querySelector('h5')
+    const myList = document.getElementById('myList')
+    myList.innerHTML = ''
+
 
     url = `https://api.adviceslip.com/advice/search/${search}`
 
@@ -37,11 +41,16 @@ function getSearch() {
 
             // adviceMsg.innerText = data.advice
 
+            //loops through the array and displays the advice object in a list item
             data.forEach(slip => {
-                for (let advice in slip) {
-                    console.log(`${advice}: ${slip[advice]}`)
 
-                }
+
+                let newListItem = document.createElement('li')
+                newListItem.textContent = slip.advice
+                myList.appendChild(newListItem)
+                //  console.log(`${advice}: ${slip[advice]}`)
+
+
             })
 
         })
